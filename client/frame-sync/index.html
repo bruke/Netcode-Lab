@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>帧同步演示 — Netcode Lab</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header>
+    <h1>帧同步（Frame Sync）</h1>
+    <p class="hint">方向键移动方块。服务器按固定节拍广播<strong>本帧所有玩家的输入</strong>；本页用相同规则本地推演位置（与服务器镜像一致）。打开多个标签可看多客户端。</p>
+    <p class="nav"><a href="/">首页</a> · <a href="/state-sync/">状态同步演示</a></p>
+  </header>
+  <div class="meta" id="meta"></div>
+  <canvas id="c" width="800" height="600"></canvas>
+  <script src="app.js"></script>
+</body>
+</html>

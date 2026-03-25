@@ -1,0 +1,18 @@
+{
+  "name": "netcode-lab",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Frame sync vs state sync learning demos (Node + WebSocket)",
+  "main": "server/src/index.js",
+  "scripts": {
+    "start": "node server/src/index.js",
+    "dev": "node server/src/index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.21.0",
+    "ws": "^8.18.0"
+  }
+}
