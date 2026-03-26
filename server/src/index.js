@@ -38,11 +38,46 @@ app.use('/state-sync', express.static(path.join(root, 'client', 'state-sync')));
 
 const server = http.createServer(app);
 
-const wssFrame = new WebSocket.Server({ server, path: '/ws/frame-sync' });
-const wssState = new WebSocket.Server({ server, path: '/ws/state-sync' });
+// Disable per-message compression for these tiny demo payloads.
+// The demo only needs small JSON frames, so keeping the transport simple is safer.
+const wssOptions = {
+    noServer: true,
+    perMessageDeflate: false,
+};
+
+const wssFrame = new WebSocket.Server(wssOptions);
+const wssState = new WebSocket.Server(wssOptions);
 
 attachFrameSyncRoom(wssFrame);
 attachStateSyncRoom(wssState);
+
+server.on('upgrade', (request, socket, head) => {
+    let pathname;
+    try {
+        pathname = new URL(request.url, 'http://127.0.0.1').pathname;
+    } catch {
+        socket.destroy();
+        return;
+    }
+
+    const handleUpgrade = (targetWss) => {
+        targetWss.handleUpgrade(request, socket, head, (ws) => {
+            targetWss.emit('connection', ws, request);
+        });
+    };
+
+    if (pathname === '/ws/frame-sync') {
+        handleUpgrade(wssFrame);
+        return;
+    }
+
+    if (pathname === '/ws/state-sync') {
+        handleUpgrade(wssState);
+        return;
+    }
+
+    socket.destroy();
+});
 
 const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
