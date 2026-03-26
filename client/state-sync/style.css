@@ -1,4 +1,7 @@
+/* 基础盒模型设置。 */
 * { box-sizing: border-box; }
+
+/* 页面整体风格比帧同步页略偏紫，方便直观区分两个 demo。 */
 body {
   font-family: ui-sans-serif, system-ui, sans-serif;
   margin: 0;
@@ -7,11 +10,17 @@ body {
   color: #ece8f0;
   line-height: 1.5;
 }
+
+/* 头部和正文内容保持同样的居中阅读宽度。 */
 header { max-width: 840px; margin: 0 auto 16px; }
 h1 { font-size: 1.35rem; font-weight: 600; margin: 0 0 8px; }
+
+/* 提示文字和导航链接的颜色层次。 */
 .hint { margin: 0; color: #a89bb8; font-size: 0.95rem; }
 .nav { margin: 12px 0 0; font-size: 0.9rem; }
 .nav a { color: #c4a8ff; }
+
+/* 连接状态文本，使用等宽字体更便于对齐和观察变化。 */
 .meta {
   max-width: 840px;
   margin: 0 auto 12px;
@@ -19,6 +28,8 @@ h1 { font-size: 1.35rem; font-weight: 600; margin: 0 0 8px; }
   font-size: 0.8rem;
   color: #8a7d99;
 }
+
+/* 画布区域是整个 demo 的中心。 */
 #c {
   display: block;
   margin: 0 auto;

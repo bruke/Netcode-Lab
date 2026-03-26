@@ -1,4 +1,7 @@
+/* 基础盒模型：避免 padding 和 border 影响布局计算。 */
 * { box-sizing: border-box; }
+
+/* 页面整体基调：深色背景、居中内容、适合长时间看调试信息。 */
 body {
   font-family: ui-sans-serif, system-ui, sans-serif;
   margin: 0;
@@ -7,11 +10,17 @@ body {
   color: #e7ecf3;
   line-height: 1.5;
 }
+
+/* 页面主体宽度控制在一个舒服的阅读范围内。 */
 header { max-width: 840px; margin: 0 auto 16px; }
 h1 { font-size: 1.35rem; font-weight: 600; margin: 0 0 8px; }
+
+/* 说明文字和导航链接的视觉层次。 */
 .hint { margin: 0; color: #9aa7b2; font-size: 0.95rem; }
 .nav { margin: 12px 0 0; font-size: 0.9rem; }
 .nav a { color: #7cb8ff; }
+
+/* 调试信息区域使用等宽字体，方便看 id、帧号和连接状态。 */
 .meta {
   max-width: 840px;
   margin: 0 auto 12px;
@@ -19,6 +28,8 @@ h1 { font-size: 1.35rem; font-weight: 600; margin: 0 0 8px; }
   font-size: 0.8rem;
   color: #7a8a99;
 }
+
+/* 画布居中，并加一点边框感和阴影，突出主交互区域。 */
 #c {
   display: block;
   margin: 0 auto;
